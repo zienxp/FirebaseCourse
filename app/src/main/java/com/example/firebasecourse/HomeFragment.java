@@ -14,7 +14,8 @@ import androidx.fragment.app.Fragment;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
-    private Button buttonAddUser;
+    private Button buttonAddUser,buttonReadUser;
+
 
 
     public HomeFragment() {
@@ -29,6 +30,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         buttonAddUser = view.findViewById(R.id.button_add_user);
         buttonAddUser.setOnClickListener(this);
+        buttonReadUser = view.findViewById(R.id.button_view_users);
+        buttonReadUser.setOnClickListener(this);
+
         return view;
     }
 
@@ -41,6 +45,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container, new AddFragment()).addToBackStack(null).commit();
                 break;
+
+            case R.id.button_view_users:
+
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.fragment_container,new ReadFragment()).addToBackStack(null).commit();
         }
     }
 }
